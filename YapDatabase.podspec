@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   # use a builtin version of sqlite3
   s.subspec 'standard' do |ss|
     ss.library = 'sqlite3'
-    ss.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DYAP_STANDARD_SQLITE' }
+    ss.xcconfig = { 'ENABLE_BITCODE' => 'NO', 'OTHER_CFLAGS' => '$(inherited) -DYAP_STANDARD_SQLITE' }
     ss.dependency 'CocoaLumberjack', '~> 2'
     ss.source_files = 'YapDatabase/**/*.{h,m,mm,c}'
     ss.private_header_files = 'YapDatabase/**/Internal/*.h'
@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   # use SQLCipher and enable -DSQLITE_HAS_CODEC flag
   s.subspec 'SQLCipher' do |ss|
     ss.dependency 'SQLCipher/fts'
-    ss.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC' }
+    ss.xcconfig = { 'ENABLE_BITCODE' => 'NO', 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC' }
     ss.dependency 'CocoaLumberjack', '~> 2'
     ss.source_files = 'YapDatabase/**/*.{h,m,mm,c}'
     ss.private_header_files = 'YapDatabase/**/Internal/*.h'
